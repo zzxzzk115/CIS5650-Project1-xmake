@@ -1,0 +1,14 @@
+{
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "clangd.enable": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=${workspaceFolder}",
+        "--header-insertion=never",
+        "--fallback-style=none"
+    ],
+    "xmake.compileCommandsBackend": "clangd",
+    "xmake.compileCommandsDirectory": ".",
+    "xmake.autoGenerateCompileCommands": "disabled",
+    "nsight.cuda.languageSupport.provider": "clangd",
+    "nsight.cuda.languageSupport.autoConfigure": false
+}

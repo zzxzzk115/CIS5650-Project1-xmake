@@ -7,7 +7,7 @@ cis5650_boids_generated_kernel*
 *.xcodeproj
 build
 
-# Created by https://www.gitignore.io/api/linux,osx,sublimetext,windows,jetbrains,vim,emacs,cmake,c++,cuda,visualstudio,webstorm,eclipse,xcode
+# Created by https://www.gitignore.io/api/linux,osx,sublimetext,windows,jetbrains,vim,emacs,c++,cuda,visualstudio,webstorm,eclipse,xcode
 
 ### Linux ###
 *~
@@ -176,15 +176,6 @@ tramp
 
 # cask packages
 .cask/
-
-
-### CMake ###
-CMakeCache.txt
-CMakeFiles
-CMakeScripts
-Makefile
-cmake_install.cmake
-install_manifest.txt
 
 
 ### C++ ###
@@ -562,3 +553,16 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 *.xcuserstate
+
+# Local CUDA/xmake environment
+/.xmake/
+/.vscode/compile_commands.json
+/compile_commands.json
+/.clangd
+/.cache/
+/*.nsys-rep
+/*.ncu-rep
+/*.ncu-repz
+/*.sqlite
+/cuda-gdb.log
+/*.local.code-workspace

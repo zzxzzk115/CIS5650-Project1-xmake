@@ -29,21 +29,15 @@ have administrative access to any CUDA-capable machine, please email the TA.
 
 See Project 0, Parts 1-3 for reference.
 
-If you are using the Nsight IDE (not Visual Studio) and started Project 0
-early, note that things have
-changed slightly. Instead of creating a new project, use
-*File->Import->General->Existing Projects Into Workspace*, and select the
-project folder as the root directory. Under *Project->Build
-Configurations->Set Active...*, you can now select various Release and Debug
-builds.
+This fork uses xmake on Linux with VS Code, clangd, and Nsight Visual Studio Code
+Edition. See [Linux Setup](LINUX_SETUP.md) for build, run, debug, and profiling commands.
 
 * `src/` contains the source code.
 * `external/` contains the binaries and headers for GLEW, GLFW, and GLM.
 
-**CMake note:** Do not change any build settings or add any files to your
-project directly (in Visual Studio, Nsight, etc.) Instead, edit the
-`CMakeLists.txt` file. Any files you create must be added here. If you edit
-it, just rebuild your VS/Nsight project to sync the changes into the IDE.
+**Build settings:** Edit the root `xmake.lua` for project settings and
+`src/xmake.lua` for the Boids target. Linux uses system GLFW, GLEW, and GLM;
+Thrust comes from the CUDA Toolkit.
 
 Please run the project without modifications to ensure that everything works
 correctly. We have provided a space in `kernel.cu` to run test code, and at the
@@ -334,8 +328,7 @@ GitHub repo](https://github.com/pjcozzi/Articles/blob/master/CIS565/GitHubRepo/R
 
 ## Submit
 
-If you have modified any of the `CMakeLists.txt` files at all (aside from the
-list of `SOURCE_FILES`), mention it explicitly. Beware of any build issues discussed on the Google Group.
+Mention build configuration changes, including this fork's migration to xmake.
 
 Open a GitHub pull request so that we can see that you have finished.
 The title should be "Project 1: YOUR NAME".
