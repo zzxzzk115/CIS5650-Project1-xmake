@@ -26,11 +26,44 @@ rule("cuda.environment")
             target:add("includedirs", cccl)
         end
         local root = os.projectdir()
-        local contents = io.readfile(path.join(root, ".clangd.in"))
+        local windows = is_host("windows")
+        local template = windows and ".clangd.win.in" or ".clangd.nowin.in"
+        local contents = io.readfile(path.join(root, template))
         contents = contents:gsub("@CUDA_PATH@", function ()
-            return json.encode("--cuda-path=" .. cuda.sdkdir):gsub("\\/", "/")
+            local flag = (windows and "/clang:" or "") .. "--cuda-path=" .. cuda.sdkdir
+            return json.encode(flag):gsub("\\/", "/")
         end)
         contents = contents:gsub("@CUDA_ARCH@", "sm_" .. arch)
+        for placeholder, dirname in pairs({CUDA_INCLUDE = "include", CUDA_CCCL = "include/cccl"}) do
+            contents = contents:gsub("@" .. placeholder .. "@", function ()
+                local flag = (windows and "/I" or "-I") .. path.join(cuda.sdkdir, dirname)
+                return json.encode(flag):gsub("\\/", "/")
+            end)
+        end
+        -- Editor-only copy of NVIDIA's Clang compatibility fix; never patch the SDK.
+        -- https://github.com/NVIDIA/cccl/pull/7904
+        local string_view = path.join(cuda.sdkdir, "include/cccl/cuda/std/string_view")
+        if os.isfile(string_view) then
+            local patched, count = io.readfile(string_view):gsub("_CCCL_HOST basic_string_view%(", "basic_string_view(")
+            if count > 0 then
+                local overlaydir = path.join(root, "build/clangd")
+                os.mkdir(overlaydir)
+                local header = path.join(overlaydir, "string_view")
+                local overlay = path.join(overlaydir, "cuda-headers.json")
+                if not os.isfile(header) or io.readfile(header) ~= patched then
+                    io.writefile(header, patched)
+                end
+                local overlay_contents = json.encode({version = 0, roots = {
+                    {type = "file", name = string_view, ["external-contents"] = header}
+                }})
+                if not os.isfile(overlay) or io.readfile(overlay) ~= overlay_contents then
+                    io.writefile(overlay, overlay_contents)
+                end
+                local prefix = windows and "/clang:" or ""
+                contents = contents .. "\n---\nCompileFlags:\n  Add: ["
+                    .. json.encode(prefix .. "-ivfsoverlay") .. ", " .. json.encode(prefix .. overlay) .. "]\n"
+            end
+        end
         local output = path.join(root, ".clangd")
         if not os.isfile(output) or io.readfile(output) ~= contents then
             io.writefile(output, contents)
