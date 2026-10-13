@@ -1,0 +1,35 @@
+{
+    "folders": [
+        {
+            "name": "CIS5650 Project 1",
+            "path": "."
+        }
+    ],
+    "settings": {
+        "C_Cpp.intelliSenseEngine": "disabled",
+        "clangd.enable": true,
+        "clangd.arguments": [
+            "--compile-commands-dir=${workspaceFolder}",
+            "--header-insertion=never",
+            "--fallback-style=none"
+        ],
+        "xmake.compileCommandsBackend": "clangd",
+        "xmake.compileCommandsDirectory": ".",
+        "xmake.autoGenerateCompileCommands": "disabled",
+        "nsight.cuda.languageSupport.provider": "clangd",
+        "nsight.cuda.languageSupport.autoConfigure": false,
+        "workbench.colorCustomizations": {
+            "activityBar.background": "#0F3328",
+            "titleBar.activeBackground": "#164838",
+            "titleBar.activeForeground": "#F5FCFA",
+            "titleBar.inactiveBackground": "#0F3328",
+            "titleBar.inactiveForeground": "#F5FCFA",
+            "statusBar.background": "#0F3328",
+            "statusBar.foreground": "#F5FCFA",
+            "statusBar.debuggingBackground": "#0F3328",
+            "statusBar.debuggingForeground": "#F5FCFA",
+            "statusBar.noFolderBackground": "#0F3328",
+            "statusBar.noFolderForeground": "#F5FCFA"
+        }
+    }
+}

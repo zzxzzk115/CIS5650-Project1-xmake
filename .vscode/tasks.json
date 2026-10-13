@@ -29,6 +29,7 @@
             },
             "problemMatcher": [
                 "$gcc",
+                "$msCompile",
                 {
                     "owner": "cuda",
                     "fileLocation": [
@@ -91,6 +92,7 @@
             },
             "problemMatcher": [
                 "$gcc",
+                "$msCompile",
                 {
                     "owner": "cuda",
                     "fileLocation": [

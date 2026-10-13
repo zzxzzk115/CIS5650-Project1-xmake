@@ -29,15 +29,18 @@ have administrative access to any CUDA-capable machine, please email the TA.
 
 See Project 0, Parts 1-3 for reference.
 
-This fork uses xmake on Linux with VS Code, clangd, and Nsight Visual Studio Code
-Edition. See [Linux Setup](LINUX_SETUP.md) for build, run, debug, and profiling commands.
+This fork uses xmake on Linux and Windows. See [Linux Setup](LINUX_SETUP.md) or
+[Windows Setup](WINDOWS_SETUP.md) for build, run, editor, debugging, and profiling
+instructions. Linux CUDA debugging uses Nsight Visual Studio Code Edition;
+native Windows CUDA debugging uses Nsight Visual Studio Edition.
 
 * `src/` contains the source code.
 * `external/` contains the binaries and headers for GLEW, GLFW, and GLM.
 
 **Build settings:** Edit the root `xmake.lua` for project settings and
 `src/xmake.lua` for the Boids target. Linux uses system GLFW, GLEW, and GLM;
-Thrust comes from the CUDA Toolkit.
+Windows uses the bundled x64 libraries and headers in `external/`. Thrust comes
+from the CUDA Toolkit.
 
 Please run the project without modifications to ensure that everything works
 correctly. We have provided a space in `kernel.cu` to run test code, and at the

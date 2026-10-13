@@ -1,6 +1,6 @@
 set_project("CIS5650-Project1-xmake")
 set_xmakever("3.0.0")
-set_allowedplats("linux")
+set_allowedplats("linux", "windows")
 set_languages("cxx17")
 set_defaultmode("debug")
 
