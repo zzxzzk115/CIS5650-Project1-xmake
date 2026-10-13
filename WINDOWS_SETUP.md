@@ -76,6 +76,25 @@ Xmake generates `.clangd` and `compile_commands.json` with the local Windows
 Toolkit path and GPU architecture. Both files are ignored by Git. Personal
 workspace settings belong in the ignored `CIS5650-Project1.local.code-workspace`.
 
+### TODO navigation
+
+Install [Better Todo Tree](https://marketplace.visualstudio.com/items?itemName=FanaticPythoner.better-todo-tree)
+from the recommended extensions. It provides the TODO tree and navigation and
+imports existing `todo-tree.*` settings. Disable or uninstall the original
+`Gruntfuggly.todo-tree` extension before using the fork, then run **Developer:
+Reload Window** in each open project window.
+
+The Windows package bundles ripgrep, so no machine-specific executable path is
+needed in the shared workspace. The original Todo Tree can report
+`command 'todo-tree.refresh' not found` when its older ripgrep lookup fails on
+new VS Code layouts. Use **Better Todo Tree: Refresh** after migrating. Keep any
+personal ripgrep override in local user settings rather than the shared
+workspace, and remove stale overrides when changing operating systems.
+
+Better Todo Tree 1.3.4 has been verified in VS Code on Windows: both the new
+refresh command and its legacy alias execute, and the TODO tree includes CUDA
+source files using the bundled ripgrep without a path override.
+
 ## CUDA debugging and profiling
 
 Use [NVIDIA Nsight Visual Studio Edition](https://developer.nvidia.com/nsight-visual-studio-edition)

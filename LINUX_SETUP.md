@@ -37,7 +37,7 @@ code CIS5650-Project1.code-workspace
 
 Install the recommended Nsight, clangd, C/C++, and xmake extensions. Shared settings also support opening the repository directly with `code .`.
 
-Keep personal colors and Todo Tree's local ripgrep path in `CIS5650-Project1.local.code-workspace`, which is ignored by Git. Start from the shared workspace file when setting up another machine.
+Better Todo Tree is recommended for TODO navigation. Disable or uninstall the original Todo Tree before using the fork; existing `todo-tree.*` settings can be imported. Keep personal colors and any local ripgrep override in `CIS5650-Project1.local.code-workspace`, which is ignored by Git. Start from the shared workspace file when setting up another machine.
 
 clangd reads the root `compile_commands.json`, updated by xmake after builds. xmake generates `.clangd` from `.clangd.in` with the detected CUDA path and architecture. Both generated files are ignored by Git. Automatic header insertion is disabled in the project config so CUDA completions do not insert Clang internal headers.
 
