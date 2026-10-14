@@ -10,5 +10,28 @@
     "xmake.compileCommandsDirectory": ".",
     "xmake.autoGenerateCompileCommands": "disabled",
     "nsight.cuda.languageSupport.provider": "clangd",
-    "nsight.cuda.languageSupport.autoConfigure": false
+    "nsight.cuda.languageSupport.autoConfigure": false,
+    "better-todo-tree.languages.customPatterns": [
+        {
+            "id": "cuda",
+            "name": "CUDA C++",
+            "languageIds": [
+                "cuda-cpp"
+            ],
+            "extensions": [
+                ".cu",
+                ".cuh"
+            ],
+            "singleLineComments": [
+                "//"
+            ],
+            "multiLineComments": [
+                {
+                    "start": "/*",
+                    "middle": "*",
+                    "end": "*/"
+                }
+            ]
+        }
+    ]
 }

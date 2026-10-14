@@ -8,6 +8,15 @@ set_defaultmode("debug")
 add_rules("mode.debug", "mode.release", "mode.releasedbg")
 add_rules("plugin.compile_commands.autoupdate", {outputdir = ".", lsp = "clangd"})
 
+-- Keep project dependencies local and never select a system GLM installation.
+set_policy("package.install_locally", true)
+includes("external/xmake.lua")
+add_requires("vendored_glm", {system = false})
+if is_plat("linux") then
+    add_requires("glfw 3.4", {system = false, configs = {shared = false, x11 = true, wayland = false}})
+    add_requires("glew 2.2.0", {system = false, configs = {shared = false}})
+end
+
 -- Configure CUDA headers and generate local clangd paths and architecture.
 rule("cuda.environment")
     add_deps("cuda.gencodes")

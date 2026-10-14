@@ -30,6 +30,29 @@
             "statusBar.debuggingForeground": "#F5FCFA",
             "statusBar.noFolderBackground": "#0F3328",
             "statusBar.noFolderForeground": "#F5FCFA"
-        }
+        },
+        "better-todo-tree.languages.customPatterns": [
+            {
+                "id": "cuda",
+                "name": "CUDA C++",
+                "languageIds": [
+                    "cuda-cpp"
+                ],
+                "extensions": [
+                    ".cu",
+                    ".cuh"
+                ],
+                "singleLineComments": [
+                    "//"
+                ],
+                "multiLineComments": [
+                    {
+                        "start": "/*",
+                        "middle": "*",
+                        "end": "*/"
+                    }
+                ]
+            }
+        ]
     }
 }

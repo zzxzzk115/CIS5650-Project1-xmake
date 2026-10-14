@@ -4,7 +4,9 @@ Use xmake, VS Code, clangd, and NVIDIA Nsight. Visual Studio is not required on 
 
 ## Build and run
 
-Install CUDA Toolkit, a working NVIDIA driver, GCC, xmake, GLFW, GLEW, GLM, and OpenGL development libraries. Keep `cuda-gdb` on `PATH`.
+Install CUDA Toolkit, a working NVIDIA driver, GCC, xmake, CMake, and OpenGL/X11 development libraries. Keep `cuda-gdb` on `PATH`.
+
+Xmake installs the repository's GLM 0.9.6.3 headers from `external/include/glm` as a local header-only package. It downloads and builds static GLFW 3.4 (X11) and GLEW 2.2.0, with system-package fallback disabled for all three dependencies. New packages are installed under `build/.packages/`; matching packages already in xmake's cache may be reused. The first configuration needs network access. System GLM, GLFW, and GLEW development packages are not required. OpenGL and X11 remain platform dependencies. The `.lib` files in `external/lib` are Windows binaries and are not used on Linux.
 
 From the repository root:
 
@@ -54,6 +56,10 @@ The starter's two VBO kernel launches use standard `<<<...>>>` delimiters for cl
 5. Press **Shift+F5** to stop.
 
 **Ctrl+Shift+B** builds Debug. `scripts/cuda-gdb` handles the Linux rendering environment for debugging. If another extension captures **F5**, use the start button in Run and Debug; disable **C/C++ Compile Run** for this workspace if installed.
+
+The CUDA launch configuration loads `scripts/glm_printers.py` so GLM vectors appear automatically in Variables > Local as `(x, y, z)` values. This avoids an Nsight expansion error for the bundled GLM's anonymous unions; adding Watch expressions is not required. Stop inside the function after initialization and select its CUDA stack frame to see its local variables.
+
+GLM buffer pointers such as `pos` and `vel` automatically preview up to four elements, bounded by their matching `N` argument. Other GLM pointers preview only the first element because a pointer does not encode an array length. Null pointers display `nullptr`. Indexed expressions such as `pos[i]` use the same vector formatting. To inspect a longer buffer, use GDB's array expression `*pos@N` (or a smaller valid count) in Watch; the resulting array expands into formatted elements. Native arrays retain GDB's indexed expansion. Pointer previews appear inline because the current Nsight adapter does not expand dynamic pretty-printer children reliably.
 
 ## Nsight Systems
 

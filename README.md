@@ -18,7 +18,7 @@ xmake
 xmake run cis5650_boids
 ```
 
-The root `xmake.lua` includes `src/xmake.lua`. CUDA paths and architecture are detected automatically. The run target sets the working directory for shaders and selects XWayland and NVIDIA rendering on Linux. Windows uses the bundled x64 GLEW/GLFW libraries and GLM headers.
+The root `xmake.lua` includes `external/xmake.lua` and `src/xmake.lua`. Both platforms use the repository's GLM 0.9.6.3 through a local xmake package. Linux uses pinned GLFW 3.4 and GLEW 2.2.0 packages built by xmake; Windows uses the bundled x64 GLEW/GLFW libraries. System-package fallback is disabled for GLM and the Linux GLFW/GLEW packages. CUDA paths and architecture are detected automatically. The run target sets the working directory for shaders and selects XWayland and NVIDIA rendering on Linux.
 
 Open `CIS5650-Project1.code-workspace` in VS Code. See [Linux Setup](LINUX_SETUP.md) or [Windows Setup](WINDOWS_SETUP.md) for the platform's build, editor, debugging, and profiling instructions. Native Windows CUDA debugging uses Nsight Visual Studio Edition; the committed VS Code `cuda-gdb` launch configuration is for Linux.
 
@@ -28,7 +28,7 @@ Open `CIS5650-Project1.code-workspace` in VS Code. See [Linux Setup](LINUX_SETUP
 - [x] Windows xmake Debug/Release builds and CUDA/OpenGL starter verified.
 - [x] clangd completion and CUDA device debugging verified.
 - [x] Nsight Systems and Compute captures verified.
-- [ ] Naive Boids simulation.
+- [x] Naive Boids simulation.
 - [ ] Scattered uniform grid.
 - [ ] Coherent uniform grid.
 - [ ] Screenshots and performance analysis.

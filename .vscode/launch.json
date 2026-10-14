@@ -8,6 +8,9 @@
             "program": "${workspaceFolder}/build/debug/cis5650_boids",
             "cwd": "${workspaceFolder}",
             "debuggerPath": "${workspaceFolder}/scripts/cuda-gdb",
+            "initCommands": [
+                "source ${workspaceFolder}/scripts/glm_printers.py"
+            ],
             "preLaunchTask": "xmake: build debug",
             "stopAtEntry": true,
             "onAPIError": "stop",

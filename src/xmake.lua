@@ -2,6 +2,7 @@ target("cis5650_boids")
     set_kind("binary")
     add_files("*.cpp", "*.cu")
     add_headerfiles("*.hpp", "*.h")
+    add_packages("vendored_glm")
     if is_plat("windows") then
         -- The bundled x64 MSVC libraries use the DLL CRT in both build modes.
         set_arch("x64")
@@ -15,7 +16,8 @@ target("cis5650_boids")
         add_links("glew32s", "glfw3")
         add_syslinks("opengl32", "gdi32", "user32", "shell32")
     else
-        add_syslinks("glfw", "GLEW", "GL")
+        add_packages("glfw", "glew")
+        add_syslinks("GL")
     end
     -- The starter loads shaders relative to the repository root.
     set_rundir("$(projectdir)")

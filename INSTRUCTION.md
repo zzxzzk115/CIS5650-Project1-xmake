@@ -38,8 +38,10 @@ native Windows CUDA debugging uses Nsight Visual Studio Edition.
 * `external/` contains the binaries and headers for GLEW, GLFW, and GLM.
 
 **Build settings:** Edit the root `xmake.lua` for project settings and
-`src/xmake.lua` for the Boids target. Linux uses system GLFW, GLEW, and GLM;
-Windows uses the bundled x64 libraries and headers in `external/`. Thrust comes
+`src/xmake.lua` for the Boids target. Both platforms use the repository's GLM
+headers through a local xmake package. Linux uses pinned, source-built xmake
+packages for GLFW and GLEW; Windows uses the bundled x64 libraries and headers
+in `external/`. Thrust comes
 from the CUDA Toolkit.
 
 Please run the project without modifications to ensure that everything works

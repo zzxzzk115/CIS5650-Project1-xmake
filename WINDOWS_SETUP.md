@@ -1,8 +1,9 @@
 # Windows CUDA Setup
 
 Build from the repository root with xmake. Windows uses the bundled x64 MSVC
-GLEW/GLFW libraries and GLM headers in `external/`. Thrust and the other CCCL
-headers come from the installed CUDA Toolkit.
+GLEW/GLFW libraries in `external/`. Xmake installs the repository's GLM 0.9.6.3
+headers as a local header-only package instead of searching for system GLM.
+Thrust and the other CCCL headers come from the installed CUDA Toolkit.
 
 ## Requirements
 
