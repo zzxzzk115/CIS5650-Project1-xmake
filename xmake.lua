@@ -20,6 +20,30 @@ end
 -- Configure CUDA headers and generate local clangd paths and architecture.
 rule("cuda.environment")
     add_deps("cuda.gencodes")
+    on_load(function (target)
+        import("core.project.config")
+        if (config.get("cuda_arch") or "native"):trim():lower() ~= "native" then
+            return
+        end
+        -- Query the driver without compiling/running a temporary CUDA executable.
+        -- Leave "native" to Xmake's CUDA probe if nvidia-smi is unavailable.
+        local output = try {function ()
+            return os.iorunv("nvidia-smi", {"--query-gpu=compute_cap", "--format=csv,noheader,nounits"})
+        end}
+        local archs = {}
+        for _, line in ipairs((output or ""):split("\n")) do
+            local major, minor = line:trim():match("^(%d+)%.(%d+)$")
+            if major then
+                table.insert(archs, "sm_" .. major .. minor)
+            end
+        end
+        if #archs > 0 then
+            -- Include every reported GPU architecture on multi-GPU hosts.
+            archs = table.unique(archs)
+            target:set("cugencodes", archs)
+            cprint("checking for CUDA architecture ... ${green}%s${clear} (nvidia-smi)", table.concat(archs, ", "))
+        end
+    end)
     on_config(function (target)
         import("core.base.json")
         local cuda = target:data("cuda")

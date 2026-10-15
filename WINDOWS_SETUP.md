@@ -47,8 +47,19 @@ xmake run cis5650_boids
 The Release executable is `build/release/cis5650_boids.exe`. Debug includes CUDA
 device symbols (`-G`); Release includes CUDA line information (`-lineinfo`).
 
-Xmake detects the Toolkit and GPU architecture. If the native GPU probe cannot
-run, select your GPU architecture explicitly, for example:
+Xmake detects the Toolkit and GPU architecture. With the default
+`--cuda_arch=native`, the project first queries `nvidia-smi` for compute
+capabilities and builds for each reported GPU architecture. If that query is
+unavailable, it uses Xmake's native CUDA probe. This avoids needing to run a
+temporary probe executable on Windows when `nvidia-smi` is available.
+
+To restore automatic detection after setting an explicit architecture:
+
+```powershell
+xmake f -m debug --cuda_arch=native -y
+```
+
+If both detection methods fail, select your GPU architecture explicitly:
 
 ```powershell
 xmake f -m debug --cuda_arch=sm_89 -y

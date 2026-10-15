@@ -29,7 +29,7 @@ xmake
 
 Binaries are in `build/{debug,release}/`. Debug includes CUDA device symbols; Release includes line information without device debug instrumentation.
 
-For a custom toolkit, use `xmake f --cuda=/path/to/cuda`. To build without GPU access, set an architecture such as `--cuda_arch=sm_89`. CUDA 13's `include/cccl` directory is added automatically when present.
+For a custom toolkit, use `xmake f --cuda=/path/to/cuda`. The default `--cuda_arch=native` queries `nvidia-smi` for each local GPU architecture, falling back to Xmake's native CUDA probe if the query is unavailable. To build without GPU access, set an architecture such as `--cuda_arch=sm_89`; use `--cuda_arch=native` to restore automatic detection. CUDA 13's `include/cccl` directory is added automatically when present.
 
 ## VS Code workspace
 
