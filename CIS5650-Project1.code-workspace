@@ -31,6 +31,36 @@
             "statusBar.noFolderBackground": "#0F3328",
             "statusBar.noFolderForeground": "#F5FCFA"
         },
+        "better-todo-tree.general.tags": [
+            "BUG", "HACK", "FIXME", "TODO", "XXX", "[ ]", "[x]", "LOOK"
+        ],
+        "better-todo-tree.tree.groupedByTag": true,
+        "better-todo-tree.tree.showCountsInTree": true,
+        "better-todo-tree.tree.labelFormat": "",
+        "better-todo-tree.regex.subTagRegex": "^\\s*(?:TODO-|[-:]\\s*)",
+        "better-todo-tree.highlights.customHighlight": {
+            "[ ]": {
+                "icon": "$(circle-outline)",
+                "iconColour": "editorWarning.foreground",
+                "foreground": "editorWarning.foreground",
+                "background": "editor.background",
+                "type": "tag"
+            },
+            "[x]": {
+                "icon": "check",
+                "iconColour": "#73C991",
+                "foreground": "#73C991",
+                "background": "editor.background",
+                "type": "tag"
+            },
+            "LOOK": {
+                "icon": "$(info)",
+                "iconColour": "editorInfo.foreground",
+                "foreground": "editorInfo.foreground",
+                "background": "editor.background",
+                "type": "tag"
+            }
+        },
         "better-todo-tree.languages.customPatterns": [
             {
                 "id": "cuda",

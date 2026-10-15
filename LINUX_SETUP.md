@@ -41,6 +41,8 @@ Install the recommended Nsight, clangd, C/C++, and xmake extensions. Shared sett
 
 Better Todo Tree is recommended for TODO navigation. Disable or uninstall the original Todo Tree before using the fork; existing `todo-tree.*` settings can be imported. Keep personal colors and any local ripgrep override in `CIS5650-Project1.local.code-workspace`, which is ignored by Git. Start from the shared workspace file when setting up another machine.
 
+Source comments retain exercise IDs and instructions: `[ ] TODO-2.3` is pending and `[x] TODO-1.2` is completed. Change only the checkbox when finishing or reopening a task. `LOOK` comments appear as blue information markers. The shared settings group entries by tag with counts, and completed entries remain clickable for review. Split comments covering multiple exercises when their completion states differ. Tree rows show exercise IDs and descriptions consistently; icons and groups show the status or information tag. Full markers remain in the source.
+
 clangd reads the root `compile_commands.json`, updated by xmake after builds. xmake generates `.clangd` with the detected CUDA path and architecture, selecting `.clangd.nowin.in` on Linux hosts and `.clangd.win.in` on Windows hosts. Both generated files are ignored by Git; edit the platform templates for shared options. Automatic header insertion is disabled by `--header-insertion=never` in the shared VS Code arguments so CUDA completions do not insert Clang internal headers.
 
 The xmake extension's separate compilation database generation and C/C++ IntelliSense are disabled. Compilation uses nvcc and GCC; clangd provides completion and navigation.

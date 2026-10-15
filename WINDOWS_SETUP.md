@@ -122,6 +122,15 @@ imports existing `todo-tree.*` settings. Disable or uninstall the original
 `Gruntfuggly.todo-tree` extension before using the fork, then run **Developer:
 Reload Window** in each open project window.
 
+Keep exercise IDs and instructions in source comments: `[ ] TODO-2.3` marks
+pending work, and `[x] TODO-1.2` marks completed work for later review. Change
+only the checkbox when finishing or reopening a task. `LOOK` comments are
+blue information markers. The shared settings group entries by tag and show
+counts; completed entries remain visible and clickable. Comments covering
+multiple exercises use separate entries when their completion states differ.
+Tree rows show exercise IDs and descriptions consistently; icons and groups
+show the status or information tag. Full markers remain in the source.
+
 The Windows package bundles ripgrep, so no machine-specific executable path is
 needed in the shared workspace. The original Todo Tree can report
 `command 'todo-tree.refresh' not found` when its older ripgrep lookup fails on

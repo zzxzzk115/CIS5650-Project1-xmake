@@ -30,7 +30,7 @@ Open `CIS5650-Project1.code-workspace` in VS Code. See [Linux Setup](LINUX_SETUP
 - [x] Nsight Systems and Compute captures verified.
 - [x] Naive Boids simulation.
 - [x] Scattered uniform grid.
-- [ ] Coherent uniform grid.
+- [x] Coherent uniform grid.
 - [ ] Screenshots and performance analysis.
 
 ## Results
