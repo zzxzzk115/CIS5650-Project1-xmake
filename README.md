@@ -2,9 +2,9 @@
 Project 1 - Flocking**
 
 - Kexuan Zhang
-- Personal laptop: CachyOS Linux, Intel Core i9-13900H, 32 GB RAM, NVIDIA GeForce RTX 4060 Laptop GPU (8 GB).
-- Linux: CUDA 13.4, xmake, VS Code with clangd and Nsight.
-- Windows: RTX 4080 SUPER, CUDA 13.3, NVIDIA driver 617.42; Debug/Release builds and starter runtime verified.
+- Personal laptop: CachyOS Linux, Intel Core i9-13900H, 32 GB RAM, NVIDIA GeForce RTX 4060 Laptop GPU (8 GB), CUDA 13.4.
+- Lab PC: Windows, Intel Core i7-14700, 32 GB RAM, NVIDIA GeForce RTX 4080 SUPER (16 GB), CUDA 13.3, NVIDIA driver 617.42.
+- Development tools: xmake, VS Code with clangd and NVIDIA Nsight.
 
 I am a University of Leeds PhD student, following CIS 5650 independently to learn CUDA/GPGPU. I am not a Penn student. This repository is for personal study; no blog, LinkedIn, or other social media write-up is planned.
 
