@@ -29,7 +29,7 @@ Open `CIS5650-Project1.code-workspace` in VS Code. See [Linux Setup](LINUX_SETUP
 - [x] clangd completion and CUDA device debugging verified.
 - [x] Nsight Systems and Compute captures verified.
 - [x] Naive Boids simulation.
-- [ ] Scattered uniform grid.
+- [x] Scattered uniform grid.
 - [ ] Coherent uniform grid.
 - [ ] Screenshots and performance analysis.
 
