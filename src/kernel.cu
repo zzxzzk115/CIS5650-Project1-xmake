@@ -445,8 +445,6 @@ __global__ void kernUpdateVelNeighborSearchScattered(
   // the number of boids that need to be checked.
   // - Identify the grid cell that this particle is in
   const glm::vec3 gridPos = (pos[index] - gridMin) * inverseCellWidth;
-  const glm::ivec3 tilePos = gridPos;
-  int gridCellIndex = gridIndex3Dto1D(tilePos.x, tilePos.y, tilePos.z, gridResolution);
 
   // - Identify which cells may contain neighbors. This isn't always 8.
   const float searchRadius = fmaxf(rule1Distance, fmaxf(rule2Distance, rule3Distance));
